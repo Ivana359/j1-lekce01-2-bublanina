@@ -48,13 +48,24 @@ public class SpousteciTrida {
         cervenaMiska.nalozSiCelyObsah(maslo125g);
         mixer.zamichej(cervenaMiska);
         kuchynskaVaha.vynulujSeS(zlutaMiska);
-        while (kuchynskaVaha.zjistiHmotnost(zlutaMiska) != 250) {
+        zlutaMiska.nalozSiTrochu(pytlikMouky);
+        int hmotnost = kuchynskaVaha.zjistiHmotnost(zlutaMiska);
+        while (hmotnost != 250) {
+            if (hmotnost > 250) {
+                zlutaMiska.vylozSiTrochu();
+            } else {
+                zlutaMiska.nalozSiTrochu(pytlikMouky);
+            }
+            hmotnost = kuchynskaVaha.zjistiHmotnost(zlutaMiska);
+        }
+
+        /*while (kuchynskaVaha.zjistiHmotnost(zlutaMiska) != 250) {
             if (kuchynskaVaha.zjistiHmotnost(zlutaMiska) > 250) {
                 zlutaMiska.vylozSiTrochu();
             } else {
                 zlutaMiska.nalozSiTrochu(pytlikMouky);
             }
-        }
+        }*/
         cervenaMiska.nalozSiObsahJineMisky(zlutaMiska);
         cervenaMiska.nalozSiCelyObsah(prasekDoPeciva);
         mixer.zamichej(cervenaMiska);
